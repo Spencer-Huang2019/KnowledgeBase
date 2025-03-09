@@ -2,9 +2,7 @@
 
 \```sh 
 
-calibration/ 
-
-├── ICP/
-
-├── other.md
+calibration
+├── ICP
+└── other.md
 

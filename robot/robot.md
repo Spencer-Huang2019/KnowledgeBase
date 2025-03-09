@@ -2,22 +2,24 @@
 
 研究生时的研究方向主要是机器人轨迹优化，在读研的过程中，自然不是只学习了机器人的轨迹优化，还学习了路径规划、机器人控制等相关的知识，以及机器人操作系统的使用和实践。
 
-主要内容如下：
+主要内容如下
+## base
+这部分是关于机器人的基础知识，包括机械臂建模、正\逆运动学、正\逆动力学等知识。
 
-robot/ 
+## robot_planning
+这部分主要包括路径规划、轨迹优化等算法，有 RRT*、FMT*、PRM* 基于采样的路径规划算法、A*，D* 基于搜索的路径规划算法、TOPP 时间最优轨迹优化算法。
 
-│── robot_planning/
+## robot_control
 
-│── robot_control/
 
-│── collision_detect/
+## collision_detect
 
-│── moveit/
 
-│── gazebo/
+## moveit 
 
-│── ROS/ 
 
-│   ├── ROS1/
+## ROS
 
-│   ├── ROS2/
+
+## gazebo
+
