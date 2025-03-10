@@ -5,8 +5,8 @@
 2. 随机采样函数的实现，需要给定一个空间范围，在这个范围内进行随机采样（基于采样的算法一般都需要这个步骤，可以实现单点采样，和多点采样供不同算法使用）
 3. 计算一个点的近邻点，使用 KDTree 搜索？其实直接树的遍历就行了吧。
 4. 碰撞检测，要实现两方面的碰撞检测（不过这个可能还得分不同的碰撞检测方法，在碰撞检测那部分的学习里具体实现吧，这里就先不实现了）
-5. 实现选择父节点的函数
-6. 实现 rewiring 的函数
+5. 实现选择父节点的函数（应该做碰撞检测）
+6. 实现 rewiring 的函数（应该做碰撞检测）
 
 先用函数名把主流程串起来，确定每个函数的输入输出内容，也就是先写好了 plan 函数，然后再逐个实现其他的函数
 */
@@ -169,7 +169,7 @@ namespace sampling_based {
             float c_nn = cost(new_node, neighbor);
             float cost_newp = cost(new_node, parent);
             float cost_neip = cost(neighbor, parent);
-            if (cost1 < cost2)
+            if (cost1 < cost2 && !collide(new_node, parent))
             {
                 parent->children_node.erase(neighbor);
                 parent->children_node.insert(new_node);
