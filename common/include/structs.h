@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <set>
+#include <climits>
 
 namespace knowledge_base {
 namespace common {
@@ -12,7 +13,7 @@ struct Point
     float x;
     float y;
     float z;
-}
+};
 
 struct Node
 {

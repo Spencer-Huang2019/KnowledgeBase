@@ -1,7 +1,7 @@
 #ifndef ROBOT_PLANNING_RRTSTART_H
 #define ROBOT_PLANNING_RRTSTART_H
 
-#include "common/structs.h"
+#include "structs.h"
 
 namespace knowledge_base {
 namespace robot_planning {
@@ -28,7 +28,7 @@ public:
     /*
     
     */
-    bool plan();
+    bool plan(Path& path);
 
 private:
     /*
@@ -36,7 +36,7 @@ private:
     */
     float* sampling_state();
 
-    void find_nearest_node(float* pos, Node* root, Node* nearest_node);
+    void find_nearest_node(float* pos, Node* root, Node* nearest_node, float last_cost);
 
     float* get_new_state(float* pos, Node* nearest_node);
 
@@ -44,13 +44,15 @@ private:
 
     bool collide(float* pos1, float* pos2);
 
+    bool collide(Node* node1, Node* node2);
+
     void find_neighbors(float* pos, Node* root,  std::vector<Node*>& neighbors_node);
 
     Node* find_parent(Node* new_node, std::vector<Node*>& neighbors_node);
 
     void rewiring(Node* new_node, std::vector<Node*> neighbors_node);
 
-    bool is_finished(Node* node);
+    bool is_finished(Node* new_node);
 
     Path get_path();
 
