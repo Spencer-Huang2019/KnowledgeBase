@@ -1,13 +1,12 @@
 # 算法流程
-1. 以起始点作为根节点建立一个棵搜索树  
-2. 在空间中随机采样一个无碰撞的状态点 r  
-3. 计算状态点 r 与树中最近的节点 near  
-4. near 到 r 方向上，从 near 开始前进一个步长得到新的状态点 new  
-5. 做碰撞检测：1）new 是否发生碰撞 2）从 near 到 new 连线中是否发生碰撞检测  
-6. 发生碰撞，回到第 2 步重复  
-7. 不发生碰撞，查找 new 一定半径范围内树上的候选 parents 节点，选择其中一个从根节点到 parent 再到 new 代价最小的节点为 new 的父节点  
-8. rewiring：在 new 的多个候选 parents 节点中计算，是否先经过 new 在经过 parent 能获得更小的代价，若是，把 new 作为某个 parent 的父节点，
-    而该 parent 节点作为叶子节点。  
+1. 以起始点作为根节点建立一个棵搜索树 
+2. 在空间中随机采样一个无碰撞的状态点 r 
+3. 计算状态点 r 与树中最近的节点 near 
+4. near 到 r 方向上，从 near 开始前进一个步长得到新的状态点 new 
+5. 做碰撞检测：1）new 是否发生碰撞 2）从 near 到 new 连线中是否发生碰撞检测 
+6. 发生碰撞，回到第 2 步重复 
+7. 不发生碰撞，查找 new 一定半径范围内树上的 neighbors 节点，选择其中一个从根节点到 neighbor再到 new 代价最小的节点为 new 的父节点 
+8. rewiring：在 new 的 neighbors 节点中计算，是否先经过 new 再经过 neighbor 能获得更小的代价，若是，把 new 作为 neighbor的父节点， 
 
 # 思考
 1. 第 7 步和第 8 步都是从 new 的候选 parents 里预连接去计算总代价。说真的，这两个的顺序好像有点问题吧。要是第 7 步找好了最优的 parent，
@@ -18,11 +17,11 @@
 
     **计算 x_new 和 x_near**
 
-    ![rrt*_step1](../../../images/rrt*_step1.png)
+    ![rrt*_step1](images/rrt_star/rrt*_step1.png)
 
     **找到 r 半径范围内的 neighbors，然后选取从 x_start 开始到 x_new 代价最小的 neighbor 为父节点，即 a 点**
 
-    ![rrt*_step2](../../../images/rrt*_step2.png)
+    ![rrt*_step2](images/rrt_star/rrt*_step2.png)
 
     **遍历 neighbors，计算 x_new 为父节点是否会得到全局代价更小的结果**  
 
@@ -30,17 +29,17 @@
 
     
 
-    ![rrt*_step3](../../../images/rrt*_step3.png)
+    ![rrt*_step3](images/rrt_star/rrt*_step3.png)
 
     **d 点先经过 x_new 的话，代价为 11，而原始的代价为 10，代价没有更小，所以不修改 d 点的父节点**
 
-    ![rrt*_step4](../../../images/rrt*_step4.png)
+    ![rrt*_step4](images/rrt_star/rrt*_step4.png)
 
     **e 点先经过 x_new 的话，代价为 11，而原始的代价为 15，代价变更小，所以修改 e 点的父节点为 x_new**
 
-    ![rrt*_step5](../../../images/rrt*_step5.png)
+    ![rrt*_step5](images/rrt_star/rrt*_step5.png)
 
-    ![rrt*_step6](../../../images/rrt*_step6.png)
+    ![rrt*_step6](images/rrt_star/rrt*_step6.png)
 
 
 3. 对我来说，一开始感觉代码里最不好实现的是找最近点，总想着是不是可以用 KDTree，在聚类的时候用过 KDTree 的包，但是输入的是 pcl::PointCloud,
