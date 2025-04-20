@@ -17,11 +17,11 @@
 
     **计算 x_new 和 x_near**
 
-    ![rrt*_step1](images/rrt_star/rrt*_step1.png)
+    ![rrtstar_step1](images/rrt_star/rrtstar_step1.png)
 
     **找到 r 半径范围内的 neighbors，然后选取从 x_start 开始到 x_new 代价最小的 neighbor 为父节点，即 a 点**
 
-    ![rrt*_step2](images/rrt_star/rrt*_step2.png)
+    ![rrtstar_step2](images/rrt_star/rrtstar_step2.png)
 
     **遍历 neighbors，计算 x_new 为父节点是否会得到全局代价更小的结果**  
 
@@ -29,17 +29,17 @@
 
     
 
-    ![rrt*_step3](images/rrt_star/rrt*_step3.png)
+    ![rrtstar_step3](images/rrt_star/rrtstar_step3.png)
 
     **d 点先经过 x_new 的话，代价为 11，而原始的代价为 10，代价没有更小，所以不修改 d 点的父节点**
 
-    ![rrt*_step4](images/rrt_star/rrt*_step4.png)
+    ![rrtstar_step4](images/rrt_star/rrtstar_step4.png)
 
     **e 点先经过 x_new 的话，代价为 11，而原始的代价为 15，代价变更小，所以修改 e 点的父节点为 x_new**
 
-    ![rrt*_step5](images/rrt_star/rrt*_step5.png)
+    ![rrtstar_step5](images/rrt_star/rrtstar_step5.png)
 
-    ![rrt*_step6](images/rrt_star/rrt*_step6.png)
+    ![rrtstar_step6](images/rrt_star/rrtstar_step6.png)
 
 
 3. 对我来说，一开始感觉代码里最不好实现的是找最近点，总想着是不是可以用 KDTree，在聚类的时候用过 KDTree 的包，但是输入的是 pcl::PointCloud,

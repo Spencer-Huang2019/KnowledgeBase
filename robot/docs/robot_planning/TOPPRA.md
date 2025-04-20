@@ -6,14 +6,14 @@ based on reachability analysis, IEEE Trans. Robot. 34 (3) (2018) 645–659.
 # 基本介绍
 TOPPRA 是一种基于 MPC 中的可达性分析概念的时间最优轨迹规划算法，旨在高效解决二阶动力学约束下的时间最优规划问题。  
 TOPP 是一种时间最优规划的路径参数化技术。常见的轨迹优化方法比如插值的方法，计算的时候需要应对的每个自由度的轨迹计算，但是路径参数化方法可以通过计算一个标量来求解所有自由度的轨迹。下边做个完整的介绍：  
-![alt text](../../images/toppra/topp_ex.png)
+![alt text](./images/toppra/topp_ex.png)
 
 最终优化的目标和参数都转换成和 s 相关的一阶导和二阶导上。  
 
 # 动力学约束
 在轨迹优化问题中引入动力学约束，如速度约束和加速度约束，约束范围分别用 $\left[\dot{\bf{q}}^{\mathrm{min}}, \dot{\bf{q}}^{\mathrm{max}} \right ]$和$\left[\ddot{\bf{q}}^{\mathrm{min}}, \ddot{\bf{q}}^{\mathrm{max}} \right ]$表示，为获得时间最短轨迹，优化问题可构造为 
 
-![alt text](../../images/toppra/TOPP_problem.png)
+![alt text](./images/toppra/TOPP_problem.png)
 
 通过链式求导法则，$\bf{q}(s(t))$ 对时间 $t$ 求一阶导数、二阶导数分别得到路径参数化后的速度、加速度轨迹函数如下所示
 $$
@@ -24,7 +24,7 @@ $$
 $$
 其中，$\bf{q}'$、$\bf{q}''$、$\bf{q}'''$ 表示 $\bf{q}$ 对 $s$ 的一阶导数、二阶导数。  
 考虑速度、加速度时间最优问题通过路径参数化的技术将优化问题转换为迭代求解最大路径速度，优化问题转换成如下形式
-![alt text](image-1.png)
+![alt text](./images/toppra/image-1.png)
 
 其中，
 $\bf{Q_i}'=\begin{bmatrix}  
